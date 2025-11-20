@@ -1,4 +1,4 @@
-# WavesApp (Spotify Clone)
+# WavesApp
 
 A basic Android app that clones Spotify's core functionality, allowing users to browse and search albums using the Spotify Web API.
 
