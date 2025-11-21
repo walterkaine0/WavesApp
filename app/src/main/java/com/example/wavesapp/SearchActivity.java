@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class SearchActivity extends AppCompatActivity {
 
-    // on below line creating variables
+
     private String searchQuery = "";
     private EditText searchEdt;
 
@@ -32,44 +32,39 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        // on below line initializing variables.
+
         searchEdt = findViewById(R.id.idEdtSearch);
         searchQuery = getIntent().getStringExtra("searchQuery");
         searchEdt.setText(searchQuery);
 
-        // on below line adding action listener
-        // for search edit text
+
         searchEdt.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
-                // on below line calling method to get tracks.
+
                 getTracks(searchEdt.getText().toString());
                 return true;
             }
             return false;
         });
 
-        // on below line getting tracks.
+
         getTracks(searchQuery);
     }
 
-    // method to get token.
     private String getToken() {
         SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
         return sh.getString("token", "Not Found");
     }
 
     private void getTracks(String searchQuery) {
-        // on below line creating and initializing variables
-        // for recycler view, list and adapter.
+
         RecyclerView songsRV = findViewById(R.id.idRVSongs);
         ArrayList<TrackModel> trackModels = new ArrayList<>();
         TrackAdapter trackAdapter = new TrackAdapter(trackModels, this);
         songsRV.setAdapter(trackAdapter);
 
-        // on below line creating variable for url.
         String url = "https://api.spotify.com/v1/search?q=" + searchQuery + "&type=track";
 
-        // on below line making json object request
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, url, null,
                 response -> {
@@ -82,11 +77,10 @@ public class SearchActivity extends AppCompatActivity {
                             String trackArtist = itemObj.getJSONArray("artists").getJSONObject(0).getString("name");
                             String trackID = itemObj.getString("id");
 
-                            // on below line adding data to array list
+
                             trackModels.add(new TrackModel(trackName, trackArtist, trackID));
                         }
 
-                        // on below line notifying adapter
                         trackAdapter.notifyDataSetChanged();
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -99,7 +93,7 @@ public class SearchActivity extends AppCompatActivity {
         ) {
             @Override
             public Map<String, String> getHeaders() {
-                // on below line adding headers.
+
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Authorization", getToken());
                 headers.put("Accept", "application/json");
@@ -108,7 +102,6 @@ public class SearchActivity extends AppCompatActivity {
             }
         };
 
-        // adding json object request to queue.
         Volley.newRequestQueue(this).add(jsonObjectRequest);
     }
 }

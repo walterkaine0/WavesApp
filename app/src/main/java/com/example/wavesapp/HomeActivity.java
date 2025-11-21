@@ -36,9 +36,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        initializeViews();   // Link UI elements with code
-        setupSearchView();   // Set listener for the search action
-        generateToken();     // Get Spotify API token
+        initializeViews();
+        setupSearchView();
+        generateToken();
     }
 
     private void initializeViews() {
@@ -66,7 +66,6 @@ public class HomeActivity extends AppCompatActivity {
 
     private void searchTracks(String searchQuery) {
         if (!searchQuery.isEmpty()) {
-            // Navigate to SearchActivity with query
             Intent intent = new Intent(this, SearchActivity.class);
             intent.putExtra("searchQuery", searchQuery);
             startActivity(intent);
@@ -84,12 +83,11 @@ public class HomeActivity extends AppCompatActivity {
                         JSONObject jsonObject = new JSONObject(response);
                         String token = jsonObject.getString("access_token");
 
-                        // Save token in SharedPreferences
                         SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
                         sharedPreferences.edit().putString("token", "Bearer " + token).apply();
 
                         isTokenGenerated = true;
-                        loadAllAlbumData(); // Load albums after token is ready
+                        loadAllAlbumData();
                     } catch (JSONException e) {
                         showError("Failed to parse token response: " + e.getMessage());
                     }

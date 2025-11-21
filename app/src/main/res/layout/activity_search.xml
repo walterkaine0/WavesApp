@@ -9,7 +9,6 @@
     android:orientation="vertical"
     tools:context=".SearchActivity">
 
-    <!-- edit text to search songs-->
     <EditText
         android:id="@+id/idEdtSearch"
         android:layout_width="match_parent"
@@ -27,7 +26,6 @@
         android:textColorHint="@color/grey"
         android:textStyle="bold" />
 
-    <!-- recycler view t display search results-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idRVSongs"
         android:layout_width="match_parent"

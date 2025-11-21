@@ -22,9 +22,8 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration); // Убедитесь, что у вас есть соответствующий XML-макет
+        setContentView(R.layout.activity_registration);
 
-        // Инициализация Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
         emailEditText = findViewById(R.id.email);
@@ -45,13 +44,10 @@ public class RegistrationActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                // Регистрация успешна, пользователь автоматически входит в систему
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Toast.makeText(RegistrationActivity.this, "Регистрация успешна.",
                                         Toast.LENGTH_SHORT).show();
-                                // TODO: Обновить UI или перейти к основному экрану
                             } else {
-                                // Если регистрация не удалась, показать сообщение пользователю.
                                 Log.w("Registration", "createUserWithEmail:failure", task.getException());
                                 Toast.makeText(RegistrationActivity.this, "Ошибка регистрации: " + task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();

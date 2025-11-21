@@ -33,7 +33,6 @@ public class AlbumModel {
         this.type = type;
     }
 
-    // Add getters (and setters if needed)
 
     public String getAlbum_type() { return album_type; }
     public String getArtistName() { return artistName; }

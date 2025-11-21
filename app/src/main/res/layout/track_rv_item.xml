@@ -9,7 +9,6 @@
     android:orientation="vertical"
     android:padding="4dp">
 
-    <!-- text view for displaying track name-->
     <TextView
         android:id="@+id/idTVTrackName"
         android:layout_width="match_parent"
@@ -18,7 +17,6 @@
         android:textColor="@color/black"
         android:textSize="17sp" />
 
-    <!-- text view for displaying artist name-->
     <TextView
         android:id="@+id/idTVTrackArtist"
         android:layout_width="match_parent"

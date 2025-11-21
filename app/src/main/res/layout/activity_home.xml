@@ -14,7 +14,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <!-- text view to display greeting-->
+
         <TextView
             android:id="@+id/idTVGreetHeading"
             android:layout_width="match_parent"
@@ -26,7 +26,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- edit text to search songs-->
+
         <EditText
             android:id="@+id/idEdtSearch"
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
             android:textColorHint="@color/white"
             android:textStyle="bold" />
 
-        <!-- text view to display heading-->
+
         <TextView
             android:id="@+id/idTVHeading1"
             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- recycler view for various albums-->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/idRVAlbums"
             android:layout_width="match_parent"
@@ -68,7 +68,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/album_rv_item" />
 
-        <!-- text view to display heading-->
+
         <TextView
             android:id="@+id/idTVHeading2"
             android:layout_width="match_parent"
@@ -81,7 +81,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- recycler view for popular albums-->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/idRVPopularAlbums"
             android:layout_width="match_parent"
@@ -90,7 +90,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/album_rv_item" />
 
-        <!-- text view to display heading-->
+
         <TextView
             android:id="@+id/idTVHeading3"
             android:layout_width="match_parent"
@@ -103,7 +103,6 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- recycler view for various albums-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/idRVTrendingAlbums"
             android:layout_width="match_parent"

@@ -26,22 +26,19 @@ public class TrackAdapter extends RecyclerView.Adapter<TrackAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // inflating layout on below line.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.track_rv_item, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        // setting data to text views.
         TrackModel trackRVModal = trackModels.get(position);
         holder.trackNameTV.setText(trackRVModal.getTrackName());
         holder.trackArtistTV.setText(trackRVModal.getTrackArtist());
 
-        // adding click listener for track item view
         holder.itemView.setOnClickListener(v -> {
             String trackUrl = "https://open.spotify.com/track/" + trackRVModal.getId();
-            Uri uri = Uri.parse(trackUrl); // missing 'http://' will cause crash
+            Uri uri = Uri.parse(trackUrl);
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             context.startActivity(intent);
         });
@@ -53,7 +50,6 @@ public class TrackAdapter extends RecyclerView.Adapter<TrackAdapter.ViewHolder> 
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        // creating and initializing variables for text views.
         TextView trackNameTV;
         TextView trackArtistTV;
 

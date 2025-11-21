@@ -39,13 +39,12 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                // Вход успешен
+
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Toast.makeText(LoginActivity.this, "Вход успешен.",
                                         Toast.LENGTH_SHORT).show();
-                                // TODO: Обновить UI или перейти к основному экрану
                             } else {
-                                // Если вход не удался
+
                                 Toast.makeText(LoginActivity.this, "Ошибка аутентификации.",
                                         Toast.LENGTH_SHORT).show();
                             }
@@ -57,10 +56,9 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Проверяем, вошел ли пользователь в систему (не null), и обновляем UI соответственно.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            // TODO: Пользователь уже вошел в систему, можно перейти к основной активности
+
         }
     }
 }

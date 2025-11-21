@@ -26,7 +26,6 @@ import java.util.Map;
 
 public class AlbumDetailActivity extends AppCompatActivity {
 
-    // creating variables on below line.
     private String albumID = "";
     private String albumImgUrl = null;
     private String albumName = null;
@@ -41,7 +40,7 @@ public class AlbumDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // initializing variables on below line.
+
         setContentView(R.layout.activity_album_detail);
 
         albumID = getIntent().getStringExtra("id");
@@ -57,42 +56,39 @@ public class AlbumDetailActivity extends AppCompatActivity {
         playButton = findViewById(R.id.playButton);
         artistTV = findViewById(R.id.idTVArtistName);
 
-        // setting data on below line.
+
         albumNameTV.setText(albumName);
         artistTV.setText(artist);
 
-        // adding click listener for fab on below line.
+
         playButton.setOnClickListener(v -> {
-            // opening album from url on below line.
+
             Uri uri = Uri.parse(albumUrl); // missing 'http://' will cause crash
             Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(intent);
         });
 
-        // loading image on below line.
+
         Glide.with(this).load(albumImgUrl).into(albumIV);
 
-        // getting album tracks on below line.
         getAlbumTracks(albumID);
     }
 
-    // method to get access token.
+
     private String getToken() {
         return getSharedPreferences("MySharedPref", MODE_PRIVATE).getString("token", "Not Found");
     }
 
-    // method to get tracks from albums.
+
     private void getAlbumTracks(String albumID) {
-        // on below line creating variable for url
+
         String url = "https://api.spotify.com/v1/albums/" + albumID + "/tracks";
 
-        // on below line creating list, initializing adapter and setting it to recycler view.
         ArrayList<TrackModel> trackModels = new ArrayList<>();
         TrackAdapter trackAdapter = new TrackAdapter(trackModels, this);
         RecyclerView trackRV = findViewById(R.id.rvAlbumDetails);
         trackRV.setAdapter(trackAdapter);
 
-        // on below line making json object request to parse json data.
         JsonObjectRequest trackObj = new JsonObjectRequest(
                 Request.Method.GET, url, null,
                 response -> {
@@ -105,7 +101,6 @@ public class AlbumDetailActivity extends AppCompatActivity {
                             String trackArtist = itemObj.getJSONArray("artists")
                                     .getJSONObject(0)
                                     .getString("name");
-                            // on below line adding data to array list.
                             trackModels.add(new TrackModel(trackName, trackArtist, id));
                         }
                         trackAdapter.notifyDataSetChanged();
@@ -118,7 +113,7 @@ public class AlbumDetailActivity extends AppCompatActivity {
                         "Fail to get Tracks" + error, Toast.LENGTH_SHORT
                 ).show()
         ) {
-            // on below line passing headers.
+
             @Override
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<>();
@@ -129,7 +124,6 @@ public class AlbumDetailActivity extends AppCompatActivity {
             }
         };
 
-        // on below line adding request to queue.
         Volley.newRequestQueue(this).add(trackObj);
     }
 }
