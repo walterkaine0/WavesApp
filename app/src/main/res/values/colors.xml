@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-
+    <color name="pastel_blue">#B0E0E6</color>
+    <color name="darker_blue">#89CFF0</color> <!-- Немного темнее для контраста -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="grey">#BDBDBD</color>
     <color name="darker_grey">#808080</color>
     <color name="fab_color">#33ffff</color>

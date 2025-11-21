@@ -1,117 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Waves App"
+        android:textSize="24sp"
+        android:layout_marginBottom="30dp"/>
+
+    <!-- Кнопки будут видны, если мы останемся на MainActivity -->
+    <Button
+        android:id="@+id/btn_go_to_login"
+        android:backgroundTint="@color/darker_blue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="vertical">
+        android:text="Перейти ко входу"
+        android:layout_marginBottom="10dp"/>
 
-        <!-- text view to display greeting-->
-        <TextView
-            android:id="@+id/idTVGreetHeading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Good morning"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+    <Button
+        android:id="@+id/btn_go_to_register"
+        android:backgroundTint="@color/darker_blue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Перейти к регистрации"
+        android:layout_marginBottom="10dp"/>
 
-        <!-- edit text to search songs-->
-        <EditText
-            android:id="@+id/idEdtSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginTop="16dp"
-            android:background="@color/grey"
-            android:drawableStart="@drawable/search"
-            android:drawablePadding="8dp"
-            android:drawableTint="@color/white"
-            android:textColor="@color/white"
-            android:hint="What do you want to listen to?"
-            android:imeOptions="actionDone"
-            android:lines="1"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColorHint="@color/white"
-            android:textStyle="bold" />
+    <Button
+        android:id="@+id/btn_logout"
+        android:backgroundTint="@color/darker_blue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выйти из аккаунта" />
 
-        <!-- text view to display heading-->
-        <TextView
-            android:id="@+id/idTVHeading1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:paddingTop="16dp"
-            android:text="Recommended for Today"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <!-- recycler view for various albums-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/idRVAlbums"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/album_rv_item" />
-
-        <!-- text view to display heading-->
-        <TextView
-            android:id="@+id/idTVHeading2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:paddingTop="16dp"
-            android:text="Popular Albums"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <!-- recycler view for popular albums-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/idRVPopularAlbums"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/album_rv_item" />
-
-        <!-- text view to display heading-->
-        <TextView
-            android:id="@+id/idTVHeading3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:paddingTop="16dp"
-            android:text="Trending now"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <!-- recycler view for various albums-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/idRVTrendingAlbums"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/album_rv_item" />
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>
