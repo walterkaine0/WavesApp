@@ -5,14 +5,12 @@ public class TrackModel {
     private String trackArtist;
     private String id;
 
-    // Constructor
     public TrackModel(String trackName, String trackArtist, String id) {
         this.trackName = trackName;
         this.trackArtist = trackArtist;
         this.id = id;
     }
 
-    // Getters
     public String getTrackName() {
         return trackName;
     }
@@ -25,7 +23,6 @@ public class TrackModel {
         return id;
     }
 
-    // Setters
     public void setTrackName(String trackName) {
         this.trackName = trackName;
     }
