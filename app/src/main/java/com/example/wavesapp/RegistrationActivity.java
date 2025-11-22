@@ -1,6 +1,8 @@
 package com.example.wavesapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -47,6 +49,9 @@ public class RegistrationActivity extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Toast.makeText(RegistrationActivity.this, "Регистрация успешна.",
                                         Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(RegistrationActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                                finish();
                             } else {
                                 Log.w("Registration", "createUserWithEmail:failure", task.getException());
                                 Toast.makeText(RegistrationActivity.this, "Ошибка регистрации: " + task.getException().getMessage(),

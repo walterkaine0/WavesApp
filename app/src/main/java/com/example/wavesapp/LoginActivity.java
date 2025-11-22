@@ -1,7 +1,9 @@
 package com.example.wavesapp;
-// В LoginActivity.java (импорты и инициализация аналогичны RegistrationActivity)
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -23,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login); // Убедитесь, что у вас есть соответствующий XML-макет
+        setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
         emailEditText = findViewById(R.id.email);
@@ -35,19 +37,19 @@ public class LoginActivity extends AppCompatActivity {
             String password = passwordEditText.getText().toString().trim();
 
             mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
 
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                Toast.makeText(LoginActivity.this, "Вход успешен.",
-                                        Toast.LENGTH_SHORT).show();
-                            } else {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(LoginActivity.this, "Вход успешен.",
+                                    Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
 
-                                Toast.makeText(LoginActivity.this, "Ошибка аутентификации.",
-                                        Toast.LENGTH_SHORT).show();
-                            }
+                            Toast.makeText(LoginActivity.this, "Ошибка аутентификации.",
+                                    Toast.LENGTH_SHORT).show();
                         }
                     });
         });
